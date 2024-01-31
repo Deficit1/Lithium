@@ -1,25 +1,26 @@
-<HTML>
-<HEAD>
-<TITLE> Gambling!!!!</TITLE>
-<style>
-body {
-  background-image: url(background2.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;  
-  background-size: cover;
-      }
-h1 {
-  font-size: 100px;
-   }
-</style>
- <link rel="icon" href="logo.jpg" type="image/jpg">
-</HEAD>
-<BODY> <center>
-  <H1>The Casino</H1>
+<html>
+<body>
 
+<h2>Random Numbers</h2>
 
+<p id="randomNumber"></p>
+<br><br>
+<p id="randomNumbers"></p>
 
+<script>
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-  
-</BODY> </center>
-</HTML>
+document.getElementById("randomNumber").innerHTML = getRandomNumber(1, 365);
+
+let randomNumbers = [];
+for(let i = 0; i < 23; i++) {
+  randomNumbers.push(getRandomNumber(1, 365));
+}
+
+document.getElementById("randomNumbers").innerHTML = randomNumbers.join(", ");
+</script>
+
+</body>
+</html>
