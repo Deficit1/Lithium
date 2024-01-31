@@ -7,8 +7,15 @@
     <div id="numbers"></div>
 
     <script>
-        function hasDuplicates(array) {
-            return (new Set(array)).size !== array.length;
+        function findDuplicates(array) {
+            let sorted_arr = array.slice().sort();
+            let results = [];
+            for (let i = 0; i < sorted_arr.length - 1; i++) {
+                if (sorted_arr[i + 1] == sorted_arr[i]) {
+                    results.push(sorted_arr[i]);
+                }
+            }
+            return results;
         }
 
         let numbers = [];
@@ -18,8 +25,9 @@
 
         document.getElementById('numbers').innerText = numbers.join(', ');
 
-        if(hasDuplicates(numbers)) {
-            document.getElementById('match').innerText = 'MATCH';
+        let duplicates = findDuplicates(numbers);
+        if(duplicates.length > 0) {
+            document.getElementById('match').innerText = 'MATCH (' + duplicates.join(', ') + ')';
         } else {
             document.getElementById('match').innerText = 'NO MATCH';
         }
