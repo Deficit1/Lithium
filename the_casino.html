@@ -1,26 +1,28 @@
 <html>
+<head>
+    <title>Random Numbers</title>
+</head>
 <body>
+    <h1 id="match"></h1>
+    <div id="numbers"></div>
 
-<h2>Random Numbers</h2>
+    <script>
+        function hasDuplicates(array) {
+            return (new Set(array)).size !== array.length;
+        }
 
-<p id="randomNumber"></p>
-<br><br>
-<p id="randomNumbers"></p>
+        let numbers = [];
+        for(let i = 0; i < 23; i++) {
+            numbers.push(Math.floor(Math.random() * 365) + 1);
+        }
 
-<script>
-function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+        document.getElementById('numbers').innerText = numbers.join(', ');
 
-document.getElementById("randomNumber").innerHTML = getRandomNumber(1, 365);
-
-let randomNumbers = [];
-for(let i = 0; i < 23; i++) {
-  randomNumbers.push(getRandomNumber(1, 365));
-}
-
-document.getElementById("randomNumbers").innerHTML = randomNumbers.join(", ");
-</script>
-
+        if(hasDuplicates(numbers)) {
+            document.getElementById('match').innerText = 'MATCH';
+        } else {
+            document.getElementById('match').innerText = 'NO MATCH';
+        }
+    </script>
 </body>
 </html>
