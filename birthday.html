@@ -1,0 +1,26 @@
+<html>
+<body>
+
+<h2>Random Numbers</h2>
+
+<p id="randomNumber"></p>
+<br><br>
+<p id="randomNumbers"></p>
+
+<script>
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+document.getElementById("randomNumber").innerHTML = getRandomNumber(1, 365);
+
+let randomNumbers = [];
+for(let i = 0; i < 23; i++) {
+  randomNumbers.push(getRandomNumber(1, 365));
+}
+
+document.getElementById("randomNumbers").innerHTML = randomNumbers.join(", ");
+</script>
+
+</body>
+</html>
